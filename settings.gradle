@@ -1,0 +1,11 @@
+//! Project name
+rootProject.name = 'Filling'
+
+//! Modules...
+
+include(':core-api')
+
+include(':json-resource-serializer')
+include(':classpath-resource-loader')
+
+include(':default-api')
