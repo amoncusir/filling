@@ -6,6 +6,7 @@ rootProject.name = 'Filling'
 include(':core-api')
 
 include(':json-resource-serializer')
-include(':classpath-resource-loader')
 
 include(':default-api')
+
+include(':testing')
