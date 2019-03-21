@@ -12,7 +12,7 @@ import kotlin.reflect.KClass
  *
  * @author Aran Moncusí Ramírez
  */
-class BasicNamingResolve:
+class BasicNamingResolve(val separator: String = "_"):
     ResourceNamingResolver
 {
     /**
@@ -26,7 +26,7 @@ class BasicNamingResolve:
     override fun resolve(clz: KClass<*>, prefix: String?, suffix: String?): String =
         "${prefix.toPrefix()}${clz.simpleName}${suffix.toSuffix()}"
 
-    private fun String?.toPrefix(): String = if (this == null) "" else "${this}_"
+    private fun String?.toPrefix(): String = if (this == null) "" else "${this}$separator"
 
-    private fun String?.toSuffix(): String = if (this == null) "" else "_${this}"
+    private fun String?.toSuffix(): String = if (this == null) "" else "$separator${this}"
 }

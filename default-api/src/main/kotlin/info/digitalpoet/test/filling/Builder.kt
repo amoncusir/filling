@@ -1,3 +1,4 @@
+@file:JvmName("Builder")
 package info.digitalpoet.test.filling
 
 import info.digitalpoet.test.filling.core.BasicNamingResolve

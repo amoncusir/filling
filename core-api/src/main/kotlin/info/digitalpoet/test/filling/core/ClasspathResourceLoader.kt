@@ -14,7 +14,7 @@ import java.io.InputStream
  */
 class ClasspathResourceLoader @JvmOverloads constructor(
     private val context: ClassLoader = Thread.currentThread().contextClassLoader,
-    val location: String = "entities",
+    val location: String? = "entities",
     val extension: String = "json"
 ):
     ResourceLoader
@@ -26,7 +26,8 @@ class ClasspathResourceLoader @JvmOverloads constructor(
      * @return InputStream of resource
      * @throws info.digitalpoet.test.filling.core.ResourceNotFound if resource not be found
      */
-    override fun loadResource(path: String): InputStream = context.getResourceAsStream(path.toResource())
+    override fun loadResource(path: String): InputStream = context.getResourceAsStream(path.toResource()) ?:
+        throw ResourceNotFound(path)
 
-    private fun String.toResource(): String = "$location/$this.$extension"
+    private fun String.toResource(): String = if (location != null) "$location/$this.$extension" else "$this.$extension"
 }

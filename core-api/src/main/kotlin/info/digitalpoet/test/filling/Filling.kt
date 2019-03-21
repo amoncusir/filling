@@ -17,7 +17,6 @@ class Filling(val options: Options)
     inline fun <reified T: Any> fill(prefix: String? = null, suffix: String? = null): T =
             fill(T::class, prefix, suffix)
 
-
     fun <T: Any> fill(clz: KClass<T>, prefix: String? = null, suffix: String? = null): T
     {
         val resourceName = options.namingResolver.resolve(clz, prefix, suffix)
