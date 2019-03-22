@@ -11,5 +11,5 @@ import kotlin.reflect.KClass
  *
  * @author Aran Moncusí Ramírez
  */
-class SerializationEntityError(path: String, clazz: KClass<*>):
-    FillingException("Error when try to serialize [$clazz] from resource: $path")
+class SerializationEntityError( clazz: KClass<*>, cause: Throwable? = null):
+    FillingException("Error when try to serialize [$clazz]", cause)
